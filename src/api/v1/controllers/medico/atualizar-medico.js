@@ -37,7 +37,7 @@ async function atualizarMedico (req, res) {
             }
         }
 
-        medicoJaCadastrado.nome = req.body.nome || medicoJaCadastrado.nome;
+        medicoJaCadastrado.nome_completo = req.body.nome_completo || medicoJaCadastrado.nome_completo;
         medicoJaCadastrado.genero = req.body.genero || medicoJaCadastrado.genero;
         medicoJaCadastrado.data_nascimento = req.body.data_nascimento || medicoJaCadastrado.data_nascimento;
         medicoJaCadastrado.cpf = req.body.cpf || medicoJaCadastrado.cpf;

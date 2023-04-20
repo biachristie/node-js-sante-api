@@ -25,7 +25,7 @@ async function atualizarPaciente (req, res) {
             }            
         }
 
-        pacienteJaCadastrado.nome = req.body.nome || pacienteJaCadastrado.nome;
+        pacienteJaCadastrado.nome_completo = req.body.nome || pacienteJaCadastrado.nome_completo;
         pacienteJaCadastrado.genero = req.body.genero || pacienteJaCadastrado.genero;
         pacienteJaCadastrado.data_nascimento = req.body.data_nascimento || pacienteJaCadastrado.data_nascimento;
         pacienteJaCadastrado.cpf = req.body.cpf || pacienteJaCadastrado.cpf;

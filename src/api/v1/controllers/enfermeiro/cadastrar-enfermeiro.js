@@ -3,7 +3,7 @@ const Enfermeiro = require('../../models/enfermeiro');
 async function cadastrarEnfermeiro (req, res) {
     try {
         const enfermeiro = {
-            nome: req.body.nome,
+            nome_completo: req.body.nome_completo,
             genero: req.body.genero,
             data_nascimento: req.body.data_nascimento,
             cpf: req.body.cpf,
@@ -13,8 +13,8 @@ async function cadastrarEnfermeiro (req, res) {
         }
 
         // VALIDAÇÃO: nome é obrigatório
-        if (!enfermeiro.nome) {
-            return res.status(400).json( { mensagem: 'Campo NOME não pode ser vazio' } );
+        if (!enfermeiro.nome_completo) {
+            return res.status(400).json( { mensagem: 'Campo NOME_COMPLETO não pode ser vazio' } );
         }
         
         // VALIDAÇÃO: data de nascimento é obrigatória

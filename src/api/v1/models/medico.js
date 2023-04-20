@@ -8,11 +8,14 @@ const Medico = conexao.define('medico', {
         autoIncrement: true,
         allowNull: false,
         unique: true,
-        primaryKey: true
+        primaryKey: true,
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
     },
-    nome: {
-        type: Sequelize.STRING,
-        allowNull: false
+    nome_completo: {
+        type: Sequelize.STRING(128),
+        allowNull: false,
+        notEmpty: true
     },
     genero: {
         type: Sequelize.STRING,
@@ -20,11 +23,13 @@ const Medico = conexao.define('medico', {
     },
     data_nascimento: {
         type: Sequelize.DATEONLY,
-        allowNull: false
+        allowNull: false,
+        notEmpty: true
     },
     cpf: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(14),
         allowNull: false,
+        notEmpty: true,
         unique: true
     },
     telefone: {
@@ -32,17 +37,20 @@ const Medico = conexao.define('medico', {
         allowNull: true
     },
     instituicao_ensino: {
-        type: Sequelize.STRING,
-        allowNull: false
+        type: Sequelize.STRING(128),
+        allowNull: false,
+        notEmpty: true
     },
     crm: {
         type: Sequelize.STRING,
         allowNull: false,
+        notEmpty: true,
         unique: true
     },
     especializacao: {
         type: Sequelize.ENUM,
         allowNull: false,
+        notEmpty: true,
         values: ['CLINICA_GERAL', 'ANESTESIA', 'DERMATOLOGIA', 'GINECOLOGIA', 'NEUROLOGIA', 'PEDIATRIA', 'PSIQUIATRIA', 'ORTOPEDIA']
     },
     estado: {

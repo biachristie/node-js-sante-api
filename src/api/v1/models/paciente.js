@@ -8,11 +8,14 @@ const Paciente = conexao.define('paciente', {
         autoIncrement: true,
         allowNull: false,
         unique: true,
-        primaryKey: true
+        primaryKey: true,
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
     },
-    nome: {
-        type: Sequelize.STRING,
-        allowNull: false
+    nome_completo: {
+        type: Sequelize.STRING(128),
+        allowNull: false,
+        notEmpty: true
     },
     genero: {
         type: Sequelize.STRING,
@@ -20,11 +23,13 @@ const Paciente = conexao.define('paciente', {
     },
     data_nascimento: {
         type: Sequelize.DATEONLY,
-        allowNull: false
+        allowNull: false,
+        notEmpty: true
     },
     cpf: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(14),
         allowNull: false,
+        notEmpty: true,
         unique: true
     },
     telefone: {
@@ -33,7 +38,8 @@ const Paciente = conexao.define('paciente', {
     },
     contato_emergencia: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        notEmpty: true
     },
     lista_alergias: {
         type: Sequelize.STRING,

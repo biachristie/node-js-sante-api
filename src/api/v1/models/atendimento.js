@@ -7,7 +7,9 @@ const Atendimento = conexao.define('atendimento', {
         autoIncrement: true,
         allowNull: false,
         unique: true,
-        primaryKey: true
+        primaryKey: true,
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
     }
 });
 

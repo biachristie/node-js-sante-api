@@ -37,13 +37,13 @@ async function atualizarEnfermeiro (req, res) {
             }
         }
 
-        enfermeiroJaCadastrado.nome = req.body.nome || enfermeiroJaCadastrado.nome;
+        enfermeiroJaCadastrado.nome_completo = req.body.nome_completo || enfermeiroJaCadastrado.nome_completo;
         enfermeiroJaCadastrado.genero = req.body.genero || enfermeiroJaCadastrado.genero;
         enfermeiroJaCadastrado.data_nascimento = req.body.data_nascimento || enfermeiroJaCadastrado.data_nascimento;
         enfermeiroJaCadastrado.cpf = req.body.cpf || enfermeiroJaCadastrado.cpf;
         enfermeiroJaCadastrado.telefone = req.body.telefone || enfermeiroJaCadastrado.telefone;
         enfermeiroJaCadastrado.instituicao_ensino = req.body.instituicao_ensino || enfermeiroJaCadastrado.instituicao_ensino;
-        enfermeiroJaCadastrado.cofen = req.body.crm || enfermeiroJaCadastrado.cofen;
+        enfermeiroJaCadastrado.cofen = req.body.cofen || enfermeiroJaCadastrado.cofen;
 
         await enfermeiroJaCadastrado.save();
         return res.status(200).json(enfermeiroJaCadastrado);

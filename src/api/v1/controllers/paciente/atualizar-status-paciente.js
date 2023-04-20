@@ -11,7 +11,7 @@ async function atualizarStatus (req, res) {
         
         // VALIDAÇÃO: req.body vazio
         if (Object.keys(req.body).length === 0) {
-            return res.status(400).json( { mensagem: 'Campo STATUS é obrigatório' } );
+            return res.status(400).json( { mensagem: 'Campo STATUS_ATENDIMENTO é obrigatório' } );
         }
 
         // VALIDAÇÃO: status difere das opções permitidas
