@@ -1,7 +1,7 @@
 {
   "name": "projeto-sante",
   "version": "1.0.0",
-  "description": "Projeto Santè - API REST de gestão hospitalar desenvolvida para 365 Medical Inc",
+  "description": "Projeto Santé - API REST de gestão hospitalar desenvolvida para 365 Medical Inc",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
