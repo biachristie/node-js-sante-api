@@ -1,17 +1,30 @@
 const Paciente = require('../../models/paciente');
 
 async function atualizarPaciente (req, res) {
-    try {
-        const pacienteJaCadastrado = await Paciente.findByPk(req.params.id);
-
-        // VALIDAÇÃO: paciente não consta no cadastro
-        if (!pacienteJaCadastrado) {
-            return res.status(404).json( { mensagem: 'Paciente não encontrado' } );
-        }
-        
+    try {        
         // VALIDAÇÃO: req.body vazio
         if (Object.keys(req.body).length === 0) {
             return res.status(400).json( { mensagem: 'Requisição não pode ser vazia' } );
+        }
+        
+        // VALIDAÇÃO: req.body.nome_completo vazio
+        if (req.body.nome_completo === "") {
+            return res.status(400).json( { mensagem: 'Campo NOME_COMPLETO não pode ser vazio' } );
+        }
+
+        // VALIDAÇÃO: req.body.data_nascimento vazio
+        if (req.body.data_nascimento === "") {
+            return res.status(400).json( {mensagem: 'Campo DATA_NASCIMENTO não pode ser vazio'} );
+        }
+
+        // VALIDAÇÃO: req.body.cpf vazio
+        if (req.body.cpf === "") {
+            return res.status(400).json( { mensagem: 'Campo CPF não pode ser vazio' } );
+        }
+
+        // VALIDAÇÃO: req.body.contato_emergencia vazio
+        if (req.body.contato_emergencia === "") {
+            return res.status(400).json( { mensagem: 'Campo CONTATO_EMERGENCIA não pode ser vazio' } );
         }
         
         // VALIDAÇÃO: CPF já consta no cadastro
@@ -22,7 +35,14 @@ async function atualizarPaciente (req, res) {
     
             if (cpfJaCadastrado) {
                 return res.status(409).json( { mensagem: 'CPF já consta no cadastro' } );
-            }            
+            }
+        }
+
+        const pacienteJaCadastrado = await Paciente.findByPk(req.params.id);
+
+        // VALIDAÇÃO: paciente não consta no cadastro
+        if (!pacienteJaCadastrado) {
+            return res.status(404).json( { mensagem: 'Paciente não encontrado' } );
         }
 
         pacienteJaCadastrado.nome_completo = req.body.nome || pacienteJaCadastrado.nome_completo;

@@ -8,6 +8,11 @@ async function excluirEnfermeiroPorId (req, res) {
         if (!enfermeiro) {
             return res.status(404).json( { mensagem: 'Enfermeiro não encontrado' } );
         }
+
+        // VALIDAÇÃO: enfermeiro possui atendimentos
+        if (enfermeiro.total_atendimentos > 0) {
+            return res.status(409).json({ mensagem: 'Enfermeiro possui atendimentos cadastrados'});
+        }
     
         await enfermeiro.destroy();
         return res.status(204).json();

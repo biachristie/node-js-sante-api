@@ -8,6 +8,11 @@ async function excluirPacientePorId (req, res) {
         if (!paciente) {
             return res.status(404).json( { mensagem: 'Paciente não encontrado' } );
         }
+
+        // VALIDAÇÃO: paciente possui atendimentos
+        if (paciente.total_atendimentos > 0) {
+            return res.status(409).json({ mensagem: 'Paciente possui atendimentos cadastrados'});
+        }
     
         await paciente.destroy();
         return res.status(204).json();

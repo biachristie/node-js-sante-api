@@ -60,7 +60,6 @@ async function cadastrarEnfermeiro (req, res) {
         });
 
     } catch (error) {
-        console.log(error);
         return res.status(500).json( { mensagem: 'Não foi possível processar a requisição' } );
     }
 }

@@ -8,8 +8,7 @@ const Enfermeiro = conexao.define('enfermeiro', {
         allowNull: false,
         unique: true,
         primaryKey: true,
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE'
+        onUpdate: 'CASCADE'
     },
     nome_completo: {
         type: Sequelize.STRING(128),

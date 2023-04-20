@@ -8,6 +8,11 @@ async function excluirMedicoPorId (req, res) {
         if (!medico) {
             return res.status(404).json( { mensagem: 'Médico não encontrado' } );
         }
+
+        // VALIDAÇÃO: médico possui atendimentos
+        if (medico.total_atendimentos > 0) {
+            return res.status(409).json({ mensagem: 'Médico possui atendimentos cadastrados'});
+        }
     
         await medico.destroy();
         return res.status(204).json();

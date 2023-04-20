@@ -1,17 +1,35 @@
 const Medico = require('../../models/medico');
 
 async function atualizarMedico (req, res) {
-    try {
-        const medicoJaCadastrado = await Medico.findByPk(req.params.id);
-
-        // VALIDAÇÃO: médico não consta no cadastro
-        if (!medicoJaCadastrado) {
-            return res.status(404).json( { mensagem: 'Médico não encontrado' } );
-        }
-        
+    try {        
         // VALIDAÇÃO: req.body vazio
         if (Object.keys(req.body).length === 0) {
             return res.status(400).json( { mensagem: 'Requisição não pode ser vazia' } );
+        }
+
+        // VALIDAÇÃO: req.body.nome_completo vazio
+        if (req.body.nome_completo === "") {
+            return res.status(400).json( { mensagem: 'Campo NOME_COMPLETO não pode ser vazio' } );
+        }
+
+        // VALIDAÇÃO: req.body.data_nascimento vazio
+        if (req.body.data_nascimento === "") {
+            return res.status(400).json( {mensagem: 'Campo DATA_NASCIMENTO não pode ser vazio'} );
+        }
+
+        // VALIDAÇÃO: req.body.cpf vazio
+        if (req.body.cpf === "") {
+            return res.status(400).json( { mensagem: 'Campo CPF não pode ser vazio' } );
+        }
+
+        // VALIDAÇÃO: req.body.instituicao_ensino vazio
+        if (req.body.instituicao_ensino === "") {
+            return res.status(400).json( { mensagem: 'Campo INSTITUICAO_ENSINO não pode ser vazio' } );
+        }
+
+        // VALIDAÇÃO: req.body.crm vazio
+        if (req.body.crm === "") {
+            return res.status(400).json( { mensagem: 'Campo CRM não pode ser vazio' } );
         }
         
         // VALIDAÇÃO: CPF já consta no cadastro
@@ -31,10 +49,16 @@ async function atualizarMedico (req, res) {
                 { where: {crm: req.body.crm} }
             );
     
-            console.log(crmJaCadastrado);
             if (crmJaCadastrado) {
                 return res.status(409).json( { mensagem: 'CRM já consta no cadastro' } );
             }
+        }
+
+        const medicoJaCadastrado = await Medico.findByPk(req.params.id);
+
+        // VALIDAÇÃO: médico não consta no cadastro
+        if (!medicoJaCadastrado) {
+            return res.status(404).json( { mensagem: 'Médico não encontrado' } );
         }
 
         medicoJaCadastrado.nome_completo = req.body.nome_completo || medicoJaCadastrado.nome_completo;
@@ -50,7 +74,6 @@ async function atualizarMedico (req, res) {
         return res.status(200).json(medicoJaCadastrado);
 
     } catch (error) {
-        console.log(error);
         return res.status(500).json( { mensagem: 'Não foi possível processar a requisição' } );
     }
 }

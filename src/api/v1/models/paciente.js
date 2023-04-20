@@ -9,8 +9,7 @@ const Paciente = conexao.define('paciente', {
         allowNull: false,
         unique: true,
         primaryKey: true,
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE'
+        onUpdate: 'CASCADE'
     },
     nome_completo: {
         type: Sequelize.STRING(128),
@@ -63,13 +62,7 @@ const Paciente = conexao.define('paciente', {
     }
 });
 
-Paciente.hasMany(Atendimento, {
-    foreignKey: {
-        name: 'id_paciente',
-        allowNull: false,
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE'
-    }
-});
+Paciente.hasMany(Atendimento, { sourceKey: 'id', foreignKey: 'id_paciente' } );
+Atendimento.belongsTo(Paciente, { foreignKey: 'id_paciente' });
 
 module.exports = Paciente;
