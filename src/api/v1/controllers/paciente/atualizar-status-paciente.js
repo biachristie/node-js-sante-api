@@ -8,16 +8,6 @@ async function atualizarStatus (req, res) {
         if (!paciente) {
             return res.status(404).json( { mensagem: 'Paciente não encontrado' } );
         }
-        
-        // VALIDAÇÃO: req.body vazio
-        if (Object.keys(req.body).length === 0) {
-            return res.status(400).json( { mensagem: 'Campo STATUS_ATENDIMENTO é obrigatório' } );
-        }
-
-        // VALIDAÇÃO: status difere das opções permitidas
-        if (!['AGUARDANDO_ATENDIMENTO', 'EM_ATENDIMENTO', 'ATENDIDO', 'NAO_ATENDIDO'].includes(req.body.status_atendimento)) {
-            return res.status(400).json( { mensagem: 'O status deve ser AGUARDANDO_ATENDIMENTO, EM_ATENDIMENTO, ATENDIDO ou NAO_ATENDIDO' } );
-        }
 
         // VALIDAÇÃO: status é igual ao já cadastrado
         if (paciente.status_atendimento === req.body.status_atendimento) {

@@ -4,7 +4,7 @@ async function listarEnfermeiroPorId (req, res) {
     try {
         const enfermeiro = await Enfermeiro.findByPk(req.params.id);
 
-        // VALIDAÇÃO: Enfermeiro não consta no cadastro
+        // VALIDAÇÃO: enfermeiro não consta no cadastro
         if (!enfermeiro) {
             return res.status(404).json( { mensagem: 'Enfermeiro não encontrado' } );
         }

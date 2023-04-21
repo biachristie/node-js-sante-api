@@ -2,36 +2,13 @@ const Enfermeiro = require('../../models/enfermeiro');
 
 async function atualizarEnfermeiro (req, res) {
     try {
-        // VALIDAÇÃO: req.body vazio
-        if (Object.keys(req.body).length === 0) {
-            return res.status(400).json( { mensagem: 'Requisição não pode ser vazia' } );
+        const enfermeiroJaCadastrado = await Enfermeiro.findByPk(req.params.id);
+        
+        // VALIDAÇÃO: enfermeiro não consta no cadastro
+        if (!enfermeiroJaCadastrado) {
+            return res.status(404).json( { mensagem: 'Enfermeiro não encontrado' } );
         }
         
-        // VALIDAÇÃO: req.body.nome_completo vazio
-        if (req.body.nome_completo === "") {
-            return res.status(400).json( { mensagem: 'Campo NOME_COMPLETO não pode ser vazio' } );
-        }
-
-        // VALIDAÇÃO: req.body.data_nascimento vazio
-        if (req.body.data_nascimento === "") {
-            return res.status(400).json( { mensagem: 'Campo DATA_NASCIMENTO não pode ser vazio' } );
-        }
-
-        // VALIDAÇÃO: req.body.cpf vazio
-        if (req.body.cpf === "") {
-            return res.status(400).json( { mensagem: 'Campo CPF não pode ser vazio' } );
-        }
-
-        // VALIDAÇÃO: req.body.instituicao_ensino vazio
-        if (req.body.instituicao_ensino === "") {
-            return res.status(400).json( { mensagem: 'Campo INSTITUICAO_ENSINO não pode ser vazio' } );
-        }
-
-        // VALIDAÇÃO: req.body.cofen vazio
-        if (req.body.cofen === "") {
-            return res.status(400).json( { mensagem: 'Campo COFEN não pode ser vazio' } );
-        }
-
         // VALIDAÇÃO: CPF já consta no cadastro
         if (req.body.cpf) {
             const cpfJaCadastrado = await Enfermeiro.findOne(
@@ -52,13 +29,6 @@ async function atualizarEnfermeiro (req, res) {
             if (cofenJaCadastrado) {
                 return res.status(409).json( { mensagem: 'COFEN já consta no cadastro' } );
             }
-        }
-
-        const enfermeiroJaCadastrado = await Enfermeiro.findByPk(req.params.id);
-
-        // VALIDAÇÃO: enfermeiro não consta no cadastro
-        if (!enfermeiroJaCadastrado) {
-            return res.status(404).json( { mensagem: 'Enfermeiro não encontrado' } );
         }
 
         enfermeiroJaCadastrado.nome_completo = req.body.nome_completo || enfermeiroJaCadastrado.nome_completo;

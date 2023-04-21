@@ -15,36 +15,6 @@ async function cadastrarMedico (req, res) {
             total_atendimentos: req.body.total_atendimentos
         }
 
-        // VALIDAÇÃO: nome é obrigatório
-        if (!medico.nome_completo) {
-            return res.status(400).json( { mensagem: 'Campo NOME_COMPLETO não pode ser vazio' } );
-        }
-        
-        // VALIDAÇÃO: data de nascimento é obrigatória
-            if (!medico.data_nascimento) {
-                return res.status(400).json( { mensagem: 'Campo DATA_NASCIMENTO não pode ser vazio' } );
-            }
-
-        // VALIDAÇÃO: CPF é obrigatório
-        if (!medico.cpf) {
-            return res.status(400).json( { mensagem: 'Campo CPF não pode ser vazio' } );
-        }
-
-        // VALIDAÇÃO: instituição de ensino de formação é obrigatória
-        if (!medico.instituicao_ensino) {
-            return res.status(400).json( { mensagem: 'Campo INSTITUICAO_ENSINO não pode ser vazio' } );
-        }
-
-        // VALIDAÇÃO: CRM é obrigatório
-        if (!medico.crm) {
-            return res.status(400).json( { mensagem: 'Campo CRM não pode ser vazio' } );
-        }
-
-        // VALIDAÇÃO: especialização é obrigatória
-        if (!medico.especializacao) {
-            return res.status(400).json( { mensagem: 'Campo ESPECIALIZACAO não pode ser vazio' } );
-        }
-
         // VALIDAÇÃO: especialização difere das opções permitidas
         if (!['CLINICA_GERAL', 'ANESTESIA', 'DERMATOLOGIA', 'GINECOLOGIA', 'NEUROLOGIA', 'PEDIATRIA', 'PSIQUIATRIA', 'ORTOPEDIA']
             .includes(medico.especializacao)) {

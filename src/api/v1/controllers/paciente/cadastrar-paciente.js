@@ -15,26 +15,6 @@ async function cadastrarPaciente (req, res) {
             status_atendimento: req.body.status_atendimento,
             total_atendimentos: req.body.total_atendimentos
         }
-
-        // VALIDAÇÃO: nome é obrigatório
-        if (!paciente.nome_completo) {
-            return res.status(400).json( { mensagem: 'Campo NOME_COMPLETO não pode ser vazio' } );
-        }
-        
-        // VALIDAÇÃO: data de nascimento é obrigatória
-        if (!paciente.data_nascimento) {
-            return res.status(400).json( { mensagem: 'Campo DATA_NASCIMENTO não pode ser vazio' } );
-        }
-
-        // VALIDAÇÃO: CPF é obrigatório
-        if (!paciente.cpf) {
-            return res.status(400).json( { mensagem: 'Campo CPF não pode ser vazio' } );
-        }
-
-        // VALIDAÇÃO: contato de emergência é obrigatório
-        if (!paciente.contato_emergencia) {
-            return res.status(400).json( { mensagem: 'Campo CONTATO_EMERGENCIA não pode ser vazio' } );
-        }
         
         // VALIDAÇÃO: paciente já está cadastrado
         const pacienteJaCadastrado = await Paciente.findOne(

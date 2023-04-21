@@ -4,7 +4,7 @@ async function excluirMedicoPorId (req, res) {
     try {
         const medico = await Medico.findByPk(req.params.id);
         
-        // VALIDAÇÃO: Médico não consta no cadastro
+        // VALIDAÇÃO: médico não consta no cadastro
         if (!medico) {
             return res.status(404).json( { mensagem: 'Médico não encontrado' } );
         }

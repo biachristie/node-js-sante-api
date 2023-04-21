@@ -4,16 +4,6 @@ const Paciente = require('../../models/paciente');
 
 async function cadastrarAtendimento (req, res) {
     try {
-        // VALIDAÇÃO: req.body vazio
-        if (Object.keys(req.body).length === 0) {
-            return res.status(400).json( { mensagem: 'Requisição não pode ser vazia' } );
-        }
-
-        // VALIDAÇÃO: id_paciente e id_medico são obrigatórios
-        if (!req.body.id_paciente || !req.body.id_medico) {
-            return res.status(400).json( { mensagem: 'Campos ID_PACIENTE e ID_MEDICO são obrigatórios' } );
-        }
-
         const paciente = await Paciente.findByPk(req.body.id_paciente);
         const medico = await Medico.findByPk(req.body.id_medico);
 

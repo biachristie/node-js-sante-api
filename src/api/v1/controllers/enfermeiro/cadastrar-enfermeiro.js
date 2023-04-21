@@ -11,31 +11,6 @@ async function cadastrarEnfermeiro (req, res) {
             instituicao_ensino: req.body.instituicao_ensino,
             cofen: req.body.cofen
         }
-
-        // VALIDAÇÃO: nome é obrigatório
-        if (!enfermeiro.nome_completo) {
-            return res.status(400).json( { mensagem: 'Campo NOME_COMPLETO não pode ser vazio' } );
-        }
-        
-        // VALIDAÇÃO: data de nascimento é obrigatória
-            if (!enfermeiro.data_nascimento) {
-                return res.status(400).json( { mensagem: 'Campo DATA_NASCIMENTO não pode ser vazio' } );
-            }
-
-        // VALIDAÇÃO: CPF é obrigatório
-        if (!enfermeiro.cpf) {
-            return res.status(400).json( { mensagem: 'Campo CPF não pode ser vazio' } );
-        }
-
-        // VALIDAÇÃO: instituição de ensino de formação é obrigatória
-        if (!enfermeiro.instituicao_ensino) {
-            return res.status(400).json( { mensagem: 'Campo INSTITUICAO_ENSINO não pode ser vazio' } );
-        }
-
-        // VALIDAÇÃO: CRM é obrigatório
-        if (!enfermeiro.cofen) {
-            return res.status(400).json( { mensagem: 'Campo COFEN não pode ser vazio' } );
-        }
         
         // VALIDAÇÃO: enfermeiro já está cadastrado
         const enfermeiroJaCadastrado = await Enfermeiro.findOne(

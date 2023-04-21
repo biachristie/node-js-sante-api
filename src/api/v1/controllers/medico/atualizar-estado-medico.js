@@ -8,16 +8,6 @@ async function atualizarEstado (req, res) {
         if (!medico) {
             return res.status(404).json( { mensagem: 'Médico não encontrado' } );
         }
-        
-        // VALIDAÇÃO: req.body vazio
-        if (Object.keys(req.body).length === 0) {
-            return res.status(400).json( { mensagem: 'Campo ESTADO é obrigatório' } );
-        }
-
-        // VALIDAÇÃO: estado difere das opções permitidas
-        if (!['ATIVO', 'INATIVO'].includes(req.body.estado)) {
-            return res.status(400).json( { mensagem: 'O estado deve ser ATIVO ou INATIVO' } );
-        }
 
         // VALIDAÇÃO: estado é igual ao já cadastrado
         if (medico.estado === req.body.estado) {
