@@ -1,5 +1,23 @@
 <h1 align="center">Santé API</h1>
 
+<div align="center">
+
+![code](https://img.shields.io/badge/Code-JavaScript-F7DF1E.svg)
+[![made-with-node-js](https://img.shields.io/badge/Made%20with-Node%20JS%20v18.14.2-66CC33.svg)](https://github.com/angular/angular-cli)
+[![made-with-express](https://img.shields.io/badge/Made%20with-Express%204.16.1-66CC33.svg)](https://github.com/angular/angular-cli)
+
+![ide](https://img.shields.io/badge/Editor-VSCode%201.77.3-3cb48c.svg)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+[![GitHub stars](https://img.shields.io/github/stars/biachristie/node-js-sante-api.svg?style=social&label=Star&maxAge=2592000)](https://github.com/biachristie/node-js-sante-api/stargazers)
+[![GitHub watchers](https://img.shields.io/github/watchers/biachristie/node-js-sante-api.svg?style=social&label=Watch&maxAge=2592000)](https://github.com/biachristie/node-js-sante-api/watchers)
+[![GitHub forks](https://img.shields.io/github/forks/biachristie/node-js-sante-api.svg?style=social&label=Fork&maxAge=2592000)](https://github.com/biachristie/node-js-sante-api/forks)
+
+
+
+</div>
+<br>
+
 <p align="justify">
 <b>Santé API</b> é uma RESTful API que permite testar e automatizar processos nos atendimentos de pacientes em âmbito hospitalar. Essa aplicação foi criada como projeto de conclusão do módulo de <i>back-end</i> do Curso de Capacitação FullStack oferecido pelo Lab365 / Senai - SC.
 </p>
@@ -120,8 +138,6 @@ Pronto! Faça bom proveito!
 
 Os *endpoints* da RESTful API estão descritos abaixo:
 
-<br>
-
 ### Cadastrar novo paciente
 
 ``POST /pacientes`` 
@@ -129,7 +145,7 @@ Os *endpoints* da RESTful API estão descritos abaixo:
     http://localhost:6666/api/pacientes
 ```
 
-Exemplo de body (json)
+Exemplo de *body* (json)
 ```
 {
     "nome_completo": "Mônica de Souza",
@@ -160,7 +176,7 @@ Exemplo de body (json)
     http://localhost:6666/api/pacientes/:id/status
 ```
 
-Exemplo de body (json)
+Exemplo de *body* (json)
 ```
 {
     "status_atendimento": "AGUARDANDO_ATENDIMENTO"
@@ -209,7 +225,7 @@ http://localhost:6666/api/pacientes/:id
     http://localhost:6666/api/medicos
 ```
 
-Exemplo de body (json)
+Exemplo de *body* (json)
 ```
 {
     "nome_completo": "Roberto Stravos",
@@ -239,7 +255,7 @@ Exemplo de body (json)
     http://localhost:6666/api/medicos/:id/status
 ```
 
-Exemplo de body (json)
+Exemplo de *body* (json)
 ```
 {
     "estado": "INATIVO"
@@ -286,7 +302,7 @@ Exemplo de body (json)
     http://localhost:6666/api/enfermeiros
 ```
 
-Exemplo de body (json)
+Exemplo de *body* (json)
 ```
 {
     "nome_completo": "Carmen Santos",
@@ -338,7 +354,7 @@ Exemplo de body (json)
 ```
     http://localhost:6666/api/atendimentos
 ```
-Exemplo de body (json)
+Exemplo de *body* (json)
 ```
 {
     "id_paciente": 1,
@@ -350,7 +366,7 @@ Exemplo de body (json)
 
 ## 🔢 *Status Code*
 
-A API foi desenvolvida para retornar diferentes *status code* de acordo com o contexto e ação. Desse modo, se uma requisição resulta em um erro, o usuário é capaz de identificar o que deu errado.
+A API foi desenvolvida para retornar diferentes *status code* de acordo com o contexto e ação. Desse modo, se uma requisição resulta em um erro, o usuário é capaz de identificar o que gerou o erro.
 
 
 A tabela abaixo fornece uma ideia geral de como a API funciona:
@@ -416,4 +432,4 @@ Feito por Beatriz Christie 🖐🏻
 
 ## 📌 Licença
 
-Este código está sob a Licença MIT, cujo texto pode ser lido em [LICENSE MIT]().
+Este código está sob a Licença MIT, cujo texto pode ser lido em [MIT License](https://github.com/biachristie/node-js-sante-api/blob/main/LICENSE.md).
