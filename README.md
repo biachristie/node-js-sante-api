@@ -25,17 +25,17 @@
 
 ## 🛠️ Tecnologias Utilizadas
 
-Este projeto foi desenvolvido utilizando [Node v18.x](https://nodejs.org/en) e as seguintes ferramentas foram usadas durante a sua construção:
+Este projeto foi desenvolvido utilizando [Node.JS v18.x](https://nodejs.org/en) e as seguintes ferramentas foram usadas durante a sua construção:
 
-- [DotEnv](https://www.npmjs.com/package/dotenv)
-- [Express](https://expressjs.com/)
-- [Nodemon](https://nodemon.io/)
-- [Node-Postgres](https://node-postgres.com/)
-- [pgAdmin](https://www.pgadmin.org/)
-- [pg-hstore](https://www.npmjs.com/package/pg-hstore)
-- [Postman](https://www.postman.com/)
-- [Sequelize](https://sequelize.org/)
-- [VSCode](https://code.visualstudio.com/)
+- [DotEnv](https://www.npmjs.com/package/dotenv) - módulo que carrega variáveis de ambiente a partir de um arquivo ``.env`` ;
+- [ExpressJS](https://expressjs.com/) - *framework* para Node.JS que fornece um conjunto de recursos para aplicativos *web* e móvel ;
+- [Nodemon](https://nodemon.io/) - *script* que reinicia automaticamente aplicações baseadas em Node.JS quando uma alteração no diretório é detectada ;
+- [Node-Postgres](https://node-postgres.com/) - coleção de módulos Node.JS que viabiliza a conexão com bancos de dados PostgreSQL ;
+- [pgAdmin](https://www.pgadmin.org/) - plataforma *Open Source* de administração e desenvolvimento para PostgreSQL ;
+- [pg-hstore](https://www.npmjs.com/package/pg-hstore) - módulo para serialização e deserialização dados JSON no formato hstore ;
+- [Postman](https://www.postman.com/) - plataforma API para construção e uso de APIs ;
+- [Sequelize](https://sequelize.org/) - Node.JS ORM (*Object Relational Mapper*) para diversos bancos de dados, como PostgreSQL ;
+- [VSCode](https://code.visualstudio.com/) - editor de código-fonte para construção e *debugging* de aplicações *web* e *cloud*.
 
 <br>
 
@@ -50,7 +50,7 @@ Antes de iniciar o servidor API, defina as configurações de acesso ao banco de
 
 Siga os passos abaixo para iniciar o projeto em modo de desenvolvimento:
 
-1. Instale Node v18.x+ em https://nodejs.org/en/download ;
+1. Instale Node.JS v18.x+ em https://nodejs.org/en/download ;
 2. Clone o repositório no terminal / cmd ;
 ```
     $ git clone https://github.com/biachristie/node-js-sante-api.git
@@ -59,16 +59,23 @@ Siga os passos abaixo para iniciar o projeto em modo de desenvolvimento:
 ```
     $ cd node-js-sante-api
 ```
-4. Instale as dependências do projeto ;
+4. Inicie o gerenciador de pacotes para o Node.JS ;
+```
+    $ npm init -y
+```
+5. Instale as dependências do projeto ;
 ```
     $ npm install express
     $ npm install nodemon --save --include=dev
+    $ npm install --save sequelize
+    $ npm install --save pg pg-hstore
+    $ npm install dotenv
 ```
-5. Execute a aplicação em modo de desenvolvimento ;
+6. Execute a aplicação em modo de desenvolvimento ;
 ```
     $ npm run dev
 ```
-6. As mensagens seguintes devem aparecer após ``npm run dev`` ;
+7. As mensagens seguintes devem aparecer após ``npm run dev`` :
 ```
     Conexão foi estabelecida com sucesso
     Aplicação está online na porta 6666
